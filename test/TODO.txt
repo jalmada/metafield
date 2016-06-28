@@ -1,0 +1,3 @@
+- Should allow style personalization.
+- Container can grow as tall as the parent element, or mantain the default size.
+  - Size to be defined.

@@ -2,7 +2,7 @@
 
 import MetaField from "./MetaField";
 
-const metaField = new MetaField('#metafield');
+const metaField = new MetaField('#metafield',1);
 
 //window.setInterval(
 //  () => {
