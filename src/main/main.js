@@ -2,7 +2,9 @@
 
 import MetaField from "./MetaField";
 
-const metaField = new MetaField('#metafield',1);
+const metaFieldDiv = new MetaField('#metafielddiv',0, true);
+const metaFieldCheckbox = new MetaField('#metafieldcheckbox',1);
+
 
 //window.setInterval(
 //  () => {

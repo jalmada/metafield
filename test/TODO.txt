@@ -1,3 +1,9 @@
 - Should allow style personalization.
-- Container can grow as tall as the parent element, or mantain the default size.
-  - Size to be defined.
+- Done: Container can grow as tall as the parent element, or mantain the default size.
+- Add Control type options.
+  - Done: Regular div
+  - Done: checkbox
+  - text
+  - radio
+- key combination.
+- move every style to css

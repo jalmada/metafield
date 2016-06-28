@@ -1,10 +1,13 @@
 export default class MetaField {
-  constructor(selector, type = 0) {
+  constructor(selector, type = 0, adjustHeight = false) {
     this._types = ['div','checkbox'];
     this._type = type;
     this._element = document.querySelector(selector);
-    this.addMetaBox(this._type);
+    this._adjustHeight = adjustHeight;
+    this.addMetaBox(this._type); 
   }
+
+
 
   set Type(value) {
 
@@ -42,15 +45,16 @@ export default class MetaField {
     }
 
     var rect = this._element.getBoundingClientRect();
+    var controlRect = this._metaControl.getBoundingClientRect();
 
     this._metaBox.style.cssText = `position: absolute;
                                   top: ${rect.top}px;
                                   left: ${rect.left + rect.width}px;
-                                  color: white;
-                                  width:${rect.height}px;
-                                  height:${rect.height}px;
-                                  background-color: red;
-                                  float: left`;
+                                  color: white;` +
+                                  (this._adjustHeight ? `height:${rect.height}px;` : ``) +
+                                  `background-color: red;`;
+
+    this._metaControl.style.cssText = `position:relative; margin-top: -13px; top:50%`;
 
     this._metaBox.appendChild(this._metaControl);
     this._element.parentNode.insertBefore(this._metaBox, this._element.nextSibling);
