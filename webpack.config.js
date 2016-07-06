@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -33,6 +34,13 @@ module.exports = {
       },
       {    test: /\.html$/,
              loader: 'raw!html-minifier'
+        },
+        {
+          test: /\.css$/,
+          loader: 'style!css?sourceMap'
+        },
+        { test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/
+          , loader: 'url?limit=100000&name=[name].[ext]'
         }
     ]
   },

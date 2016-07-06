@@ -1,10 +1,10 @@
 export default class MetaField {
   constructor(selector, type = 0, adjustHeight = false) {
-    this._types = ['div','checkbox'];
+    this._types = ['div','checkbox', 'text', 'radio', 'img'];
     this._type = type;
     this._element = document.querySelector(selector);
     this._adjustHeight = adjustHeight;
-    this.addMetaBox(this._type); 
+    this.addMetaBox(this._type);
   }
 
 
@@ -39,13 +39,24 @@ export default class MetaField {
         this._metaControl = document.createElement("input");
         this._metaControl.type = 'checkbox';
         break;
+      case 2:
+        this._metaControl = document.createElement("input");
+        this._metaControl.type = 'text';
+        break;
+      case 3:
+        this._metaControl = document.createElement("input");
+        this._metaControl.type = 'radio';
+        break;
+      case 4:
+        this._metaControl = document.createElement("img");
+        break;
       default:
         this._metaControl = document.createElement("div");
         this._metaControl.innerHTML = "M";
     }
 
     var rect = this._element.getBoundingClientRect();
-    var controlRect = this._metaControl.getBoundingClientRect();
+
 
     this._metaBox.style.cssText = `position: absolute;
                                   top: ${rect.top}px;
@@ -54,10 +65,13 @@ export default class MetaField {
                                   (this._adjustHeight ? `height:${rect.height}px;` : ``) +
                                   `background-color: red;`;
 
-    this._metaControl.style.cssText = `position:relative; margin-top: -13px; top:50%`;
+
 
     this._metaBox.appendChild(this._metaControl);
     this._element.parentNode.insertBefore(this._metaBox, this._element.nextSibling);
+
+    var controlRect = this._metaControl.getBoundingClientRect();
+    this._metaControl.style.cssText = `position:relative; margin-top:-${controlRect.height}px; top:50%`;
   }
 
   //render() {
